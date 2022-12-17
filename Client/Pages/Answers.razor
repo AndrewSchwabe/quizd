@@ -7,7 +7,7 @@
 @foreach(var answerModel in AnswerModels)
 {
     <div>
-        <div>@answerModel.Body</div>
+        <div>@((MarkupString)answerModel.Body)</div>
         <div>@answerModel.IsAccepted</div>
     </div>    
 }

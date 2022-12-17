@@ -7,7 +7,7 @@
 {
     <div class="question-list-item">
         <a href="/answers/@question.Id">
-            <div>@question.Title</div>
+            <div>@((MarkupString)question.Title)</div>
             <div class="answer">Answer Count: @question.AnswerCount</div>
         </a>
     </div>
