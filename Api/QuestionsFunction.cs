@@ -16,14 +16,11 @@ namespace ApiIsolated
     public class QuestionFunction
     {
         private readonly IStackExchangeService _stackExchangeService;
-        private readonly ILogger _logger;
 
         public QuestionFunction(
-            IStackExchangeService stackExchangeService,
-            ILoggerFactory loggerFactory)
+            IStackExchangeService stackExchangeService)
         {
             _stackExchangeService = stackExchangeService;
-            _logger = loggerFactory.CreateLogger<HttpTrigger>();
         }
 
         [Function("GetQuestions")]
