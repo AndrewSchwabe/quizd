@@ -1,8 +1,8 @@
 ﻿namespace BlazorApp.Shared
 {
-    public class Question
+    public class QuestionModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
         public int AnswerCount { get; set; }
     }

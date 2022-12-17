@@ -1,7 +1,5 @@
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Azure.Functions.Worker.Configuration;
+using StackExchangeService.Configuration;
 
 namespace ApiIsolated
 {
@@ -11,6 +9,10 @@ namespace ApiIsolated
         {
             var host = new HostBuilder()
                 .ConfigureFunctionsWorkerDefaults()
+                .ConfigureServices((httpContext, serviceCollection) => 
+                {
+                    StackExchangeServiceConfiguration.Configure(serviceCollection);
+                })
                 .Build();
 
             host.Run();

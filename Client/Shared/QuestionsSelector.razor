@@ -12,10 +12,10 @@
 }
 
 @code {
-    private IEnumerable<Question> Questions = new List<Question>();
+    private IEnumerable<QuestionModel> Questions = new List<QuestionModel>();
 
     protected override async Task OnInitializedAsync()
     {
-        Questions = await Http.GetFromJsonAsync<IEnumerable<Question>>("/api/Questions") ?? new List<Question>();
+        Questions = await Http.GetFromJsonAsync<IEnumerable<QuestionModel>>("/api/Questions") ?? new List<QuestionModel>();
     }
 }
