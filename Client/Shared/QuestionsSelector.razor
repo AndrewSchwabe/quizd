@@ -1,0 +1,41 @@
+﻿@using BlazorApp.Shared;
+
+<h3>QuestionsSelector</h3>
+
+@foreach(var question in Questions)
+{
+    <div>
+        <div>Question: @question.Title</div>
+        <div>Answer Count: @question.AnswerCount</div>
+    </div>    
+}
+
+@code {
+    IEnumerable<Question> Questions = new List<Question>
+    {
+     new Question
+     {
+        Id = 0,
+        Title = $"Title-{Guid.NewGuid()}",
+        AnswerCount = 4
+     },
+     new Question
+     {
+        Id = 1,
+        Title = $"Title-{Guid.NewGuid()}",
+        AnswerCount = 14
+     },
+     new Question
+     {
+        Id = 2,
+        Title = $"Title-{Guid.NewGuid()}",
+        AnswerCount = 44
+     },
+     new Question
+     {
+        Id = 0,
+        Title = $"Title-{Guid.NewGuid()}",
+        AnswerCount = 8
+     }
+    };
+}
