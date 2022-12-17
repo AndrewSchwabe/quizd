@@ -19,6 +19,8 @@
     protected override async Task OnInitializedAsync()
     {
         AnswerModels = await Http.GetFromJsonAsync<IEnumerable<AnswerModel>>($"/api/question/{QuestionId}/answers") ?? new List<AnswerModel>();
+        var random = new Random();
+        AnswerModels = AnswerModels.OrderBy(am => random.Next());
     }
 
     private void IsCorrect(AnswerModel answer)
