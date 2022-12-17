@@ -18,6 +18,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Questions = await Http.GetFromJsonAsync<IEnumerable<QuestionModel>>("/api/Questions") ?? new List<QuestionModel>();
+        Questions = await Http.GetFromJsonAsync<IEnumerable<QuestionModel>>("/api/question") ?? new List<QuestionModel>();
     }
 }

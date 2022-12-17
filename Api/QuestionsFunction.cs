@@ -27,12 +27,28 @@ namespace ApiIsolated
         }
 
         [Function("GetQuestions")]
-        public async Task<HttpResponseData> GetQuestions([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "questions")] HttpRequestData req)
+        public async Task<HttpResponseData> GetQuestions([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "question")] HttpRequestData req)
         {
             var questions = await _stackExchangeService.SearchQuestionsAsync();
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             await response.WriteAsJsonAsync(ToQuestionModel(questions));
+
+            return response;
+        }
+
+        [Function("GetQuestionById")]
+        public async Task<HttpResponseData> GetQuestionById(
+            [HttpTrigger(
+                AuthorizationLevel.Anonymous, 
+                "get", 
+                Route = "question/{questionId:long}")] HttpRequestData req,
+            long questionId)
+        {
+            var question = await _stackExchangeService.GetQuestionByIdAsync(questionId);
+
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            await response.WriteAsJsonAsync(ToQuestionModel(question));
 
             return response;
         }
@@ -65,13 +81,17 @@ namespace ApiIsolated
 
         private IEnumerable<QuestionModel> ToQuestionModel(IEnumerable<Question> questions)
         {
-            return questions.Select(questions =>
-            new QuestionModel
+            return questions.Select(ToQuestionModel);
+        }
+
+        private QuestionModel ToQuestionModel(Question question)
+        {
+            return new QuestionModel
             {
-                AnswerCount = questions.AnswerCount,
-                Id = questions.Id,
-                Title = questions.Title
-            });
+                AnswerCount = question.AnswerCount,
+                Id = question.Id,
+                Title = question.Title
+            };
         }
     }
 }

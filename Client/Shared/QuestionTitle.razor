@@ -1,0 +1,16 @@
+﻿@using BlazorApp.Shared;
+@inject HttpClient Http;
+
+<h1>@((MarkupString)Question.Title)</h1>
+
+@code {
+    [Parameter]
+    public long QuestionId { get; set; }
+
+    private QuestionModel Question = new QuestionModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Question = await Http.GetFromJsonAsync<QuestionModel>($"/api/question/{QuestionId}") ?? new QuestionModel();
+    }
+}

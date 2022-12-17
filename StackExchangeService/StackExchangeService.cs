@@ -30,6 +30,21 @@ namespace StackExchangeService
             return new List<Question>();
         }
 
+        public async Task<Question> GetQuestionByIdAsync(long questionId)
+        {
+            var client = _httpClientFactory.CreateClient("stackexchange");
+
+            var response = await client.GetAsync($"/2.3/questions/{questionId}?order=desc&sort=activity&site=stackoverflow");
+            if (response.IsSuccessStatusCode)
+            {
+                string responseString = await GetStringResponseContent(response);
+
+                return JsonSerializer.Deserialize<Response<Question>>(responseString)?.Items.SingleOrDefault() ?? new Question();
+            }
+
+            return new Question();
+        }
+
         public async Task<IEnumerable<Answer>> GetAnswersByQuestionIdAsync(long questionId)
         {
             var client = _httpClientFactory.CreateClient("stackexchange");

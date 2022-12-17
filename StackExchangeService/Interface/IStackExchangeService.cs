@@ -8,6 +8,8 @@ namespace StackExchangeService.Interface
             int pageSize = 10,
             int answers = 1);
 
+        Task<Question> GetQuestionByIdAsync(long questionId);
+
         Task<IEnumerable<Answer>> GetAnswersByQuestionIdAsync(long questionId);
     }
 }
