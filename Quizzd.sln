@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackExchangeService", "StackExchangeService\StackExchangeService.csproj", "{860DFA41-165D-40D4-BF85-06CEBB3CA642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackExchangeService", "StackExchangeService\StackExchangeService.csproj", "{860DFA41-165D-40D4-BF85-06CEBB3CA642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

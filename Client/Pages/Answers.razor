@@ -2,7 +2,8 @@
 @using BlazorApp.Shared;
 @inject HttpClient Http;
 
-<PageTitle>@QuestionId</PageTitle>
+<PageTitle>Question: @QuestionId</PageTitle>
+<BackArrow/>
 
 @foreach(var answerModel in AnswerModels)
 {
