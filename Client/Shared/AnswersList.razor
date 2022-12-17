@@ -16,8 +16,10 @@
 
     private IEnumerable<AnswerModel> AnswerModels = new List<AnswerModel>();
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (!firstRender) return;
+
         AnswerModels = await Http.GetFromJsonAsync<IEnumerable<AnswerModel>>($"/api/question/{QuestionId}/answers") ?? new List<AnswerModel>();
         var random = new Random();
         AnswerModels = AnswerModels.OrderBy(am => random.Next());
