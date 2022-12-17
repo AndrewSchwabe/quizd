@@ -6,7 +6,7 @@ namespace StackExchangeService.Interface
     {
         Task<IEnumerable<Question>> SearchQuestionsAsync(
             int pageSize = 10,
-            int answers = 1);
+            int answers = 2);
 
         Task<Question> GetQuestionByIdAsync(long questionId);
 
