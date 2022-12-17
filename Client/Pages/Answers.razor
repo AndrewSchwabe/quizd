@@ -6,9 +6,9 @@
 
 @foreach(var answerModel in AnswerModels)
 {
-    <div>
+    <div  class="answer-list-item @answerModel.Class">
         <div>@((MarkupString)answerModel.Body)</div>
-        <div>@answerModel.IsAccepted</div>
+        <button @onclick="() => IsCorrect(answerModel)">Accept</button>
     </div>    
 }
 
@@ -22,5 +22,22 @@
     protected override async Task OnInitializedAsync()
     {
         AnswerModels = await Http.GetFromJsonAsync<IEnumerable<AnswerModel>>($"/api/question/{QuestionId}/answers") ?? new List<AnswerModel>();
+    }
+
+    private void IsCorrect(AnswerModel answer)
+    {
+        if (answer.IsAccepted)
+        {
+            foreach (var answerModel in AnswerModels)
+            {
+                answerModel.Class = "incorrect";
+            }
+
+            answer.Class = "accepted";
+        }
+        else
+        {
+            answer.Class = "incorrect-selection";
+        }
     }
 }
