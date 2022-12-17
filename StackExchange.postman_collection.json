@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "5f5988dc-3ecb-43eb-90d9-7b9313fcba15",
+		"name": "StackExchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Advanced Question Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.stackexchange.com/2.3/search/advanced?pagesize=4&order=desc&sort=activity&accepted=true&answers=8&site=stackoverflow",
+					"protocol": "https",
+					"host": [
+						"api",
+						"stackexchange",
+						"com"
+					],
+					"path": [
+						"2.3",
+						"search",
+						"advanced"
+					],
+					"query": [
+						{
+							"key": "pagesize",
+							"value": "4"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						},
+						{
+							"key": "sort",
+							"value": "activity"
+						},
+						{
+							"key": "accepted",
+							"value": "true"
+						},
+						{
+							"key": "answers",
+							"value": "8"
+						},
+						{
+							"key": "site",
+							"value": "stackoverflow"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Qustion By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.stackexchange.com/2.3/questions/:questionId?order=desc&sort=activity&site=stackoverflow",
+					"protocol": "https",
+					"host": [
+						"api",
+						"stackexchange",
+						"com"
+					],
+					"path": [
+						"2.3",
+						"questions",
+						":questionId"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "desc"
+						},
+						{
+							"key": "sort",
+							"value": "activity"
+						},
+						{
+							"key": "site",
+							"value": "stackoverflow"
+						}
+					],
+					"variable": [
+						{
+							"key": "questionId",
+							"value": "74837572"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Question Answers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.stackexchange.com/2.3/questions/:questionId/answers?order=desc&sort=activity&site=stackoverflow&filter=!nOedRLqQ19",
+					"protocol": "https",
+					"host": [
+						"api",
+						"stackexchange",
+						"com"
+					],
+					"path": [
+						"2.3",
+						"questions",
+						":questionId",
+						"answers"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "desc"
+						},
+						{
+							"key": "sort",
+							"value": "activity"
+						},
+						{
+							"key": "site",
+							"value": "stackoverflow"
+						},
+						{
+							"key": "filter",
+							"value": "!nOedRLqQ19"
+						}
+					],
+					"variable": [
+						{
+							"key": "questionId",
+							"value": "74837572"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
