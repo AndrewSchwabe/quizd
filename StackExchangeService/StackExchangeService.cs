@@ -15,7 +15,7 @@ namespace StackExchangeService
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IEnumerable<Question>> SearchQuestionsAsync(int pageSize = 10, int minAnswerCount = 1)
+        public async Task<IEnumerable<Question>> SearchQuestionsAsync(int pageSize = 10, int minAnswerCount = 2)
         {
             var client = _httpClientFactory.CreateClient("stackexchange");
 
