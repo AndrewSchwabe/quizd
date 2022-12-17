@@ -1,11 +1,15 @@
 ﻿.question-list-item {
-    padding: 10px;
     border: solid 1px grey;
     border-radius: 10px;
+    color: black;
+    padding: 10px;
     margin: 10px;
 }
+    .question-list-item a {
+        text-decoration: none;
+    }
 
-.question-list-item .answer {
-    color: grey;
-    font-size: 12px;
-}
+    .question-list-item .answer {
+        color: grey;
+        font-size: 12px;
+    }

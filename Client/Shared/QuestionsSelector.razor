@@ -3,12 +3,14 @@
 
 <h3>QuestionsSelector</h3>
 
-@foreach(var question in Questions)
+@foreach (var question in Questions)
 {
     <div class="question-list-item">
-        <div>@question.Title</div>
-        <div class="answer">Answer Count: @question.AnswerCount</div>
-    </div>    
+        <a href="/answers/@question.Id">
+            <div>@question.Title</div>
+            <div class="answer">Answer Count: @question.AnswerCount</div>
+        </a>
+    </div>
 }
 
 @code {
