@@ -7,5 +7,6 @@
         public string Body { get; set; }
 
         public string Class { get; set; } = string.Empty;
+        public bool ButtonDisabled { get; set; } = false;
     }
 }
