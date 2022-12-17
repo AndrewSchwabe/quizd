@@ -5,9 +5,9 @@
 
 @foreach(var question in Questions)
 {
-    <div>
-        <div>Question: @question.Title</div>
-        <div>Answer Count: @question.AnswerCount</div>
+    <div class="question-list-item">
+        <div>@question.Title</div>
+        <div class="answer">Answer Count: @question.AnswerCount</div>
     </div>    
 }
 
