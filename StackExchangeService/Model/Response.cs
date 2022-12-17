@@ -2,9 +2,9 @@
 
 namespace StackExchangeService.Model
 {
-    public class SearchResponse
+    public class Response<T>
     {
         [JsonPropertyName("items")]
-        public IEnumerable<Question> Questions { get; set; } = new List<Question>();
+        public IEnumerable<T> Items { get; set; } = new List<T>();
     }
 }

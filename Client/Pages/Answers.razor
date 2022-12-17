@@ -1,0 +1,26 @@
+﻿@page "/answers/{questionId:long}"
+@using BlazorApp.Shared;
+@inject HttpClient Http;
+
+<PageTitle>@QuestionId</PageTitle>
+
+@foreach(var answerModel in AnswerModels)
+{
+    <div>
+        <div>@answerModel.Body</div>
+        <div>@answerModel.IsAccepted</div>
+    </div>    
+}
+
+
+@code {
+    [Parameter]
+    public long QuestionId { get; set; }
+
+    private IEnumerable<AnswerModel> AnswerModels = new List<AnswerModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        AnswerModels = await Http.GetFromJsonAsync<IEnumerable<AnswerModel>>($"/api/question/{QuestionId}/answers") ?? new List<AnswerModel>();
+    }
+}

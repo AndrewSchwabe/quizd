@@ -7,5 +7,7 @@ namespace StackExchangeService.Interface
         Task<IEnumerable<Question>> SearchQuestionsAsync(
             int pageSize = 10,
             int answers = 1);
+
+        Task<IEnumerable<Answer>> GetAnswersByQuestionIdAsync(long questionId);
     }
 }
