@@ -16,18 +16,18 @@
 
     private IEnumerable<AnswerModel> AnswerModels = new List<AnswerModel>();
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (!firstRender) return;
-
-        AnswerModels = await Http.GetFromJsonAsync<IEnumerable<AnswerModel>>($"/api/question/{QuestionId}/answers") ?? new List<AnswerModel>();
-        var random = new Random();
-        AnswerModels = AnswerModels.OrderBy(am => random.Next());
+        if (!AnswerModels.Any())
+        {
+            AnswerModels = await Http.GetFromJsonAsync<IEnumerable<AnswerModel>>($"/api/question/{QuestionId}/answers") ?? new List<AnswerModel>();
+            var random = new Random();
+            AnswerModels = AnswerModels.OrderBy(am => random.Next());
+        }
     }
 
     private void IsCorrect(AnswerModel answer)
     {
-
         foreach (var answerModel in AnswerModels)
         {
             answerModel.Class = "incorrect";
@@ -35,6 +35,5 @@
         }
 
         answer.Class = "accepted";
-
     }
 }
