@@ -1,0 +1,10 @@
+﻿@inject NavigationManager Navigation;
+
+<button @onclick="NavigateHome">Play Again!</button>
+
+@code {
+    private void NavigateHome()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

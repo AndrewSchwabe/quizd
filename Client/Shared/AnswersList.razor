@@ -1,5 +1,6 @@
 ﻿@using BlazorApp.Shared;
 @inject HttpClient Http;
+@inject NavigationManager Navigation;
 
 @foreach (var answerModel in AnswerModels)
 {
@@ -8,7 +9,6 @@
         <button disabled="@answerModel.ButtonDisabled" @onclick="() => IsCorrect(answerModel)">Accepted Answer</button>
     </div>
 }
-
 
 @code {
     [Parameter]
@@ -28,12 +28,7 @@
 
     private void IsCorrect(AnswerModel answer)
     {
-        foreach (var answerModel in AnswerModels)
-        {
-            answerModel.Class = "incorrect";
-            answerModel.ButtonDisabled = true;
-        }
-
-        answer.Class = "accepted";
+        if (answer.IsAccepted) Navigation.NavigateTo("/correct");
+        else Navigation.NavigateTo("/incorrect");
     }
 }
